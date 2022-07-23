@@ -51,6 +51,7 @@ const PostItemWrapper = styled.li`
   padding: 16px;
   border: 1px solid gray;
   border-radius: 8px;
+  background: #fff;
 `;
 
 const PostItemAuthor = styled.b`
