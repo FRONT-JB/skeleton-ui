@@ -19,7 +19,7 @@ export const createSkeletonStyle = (
     position: relative;
     background: #f2f2f2;
     overflow: hidden;
-    &:not(:first-child) {
+    &:not(:first-of-type) {
       margin-top: ${`${gap}px`};
     }
     &::before {

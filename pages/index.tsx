@@ -1,34 +1,13 @@
-import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
+import Link from 'next/link';
 import styled from '@emotion/styled';
 
-import PostList from '@/components/posts/PostList';
-import { PostTypes } from '@/types/post';
-
-import axios from 'axios';
-
-const getPosts = async () => {
-  const url = 'https://jsonplaceholder.typicode.com/posts';
-  const { data: posts } = await axios.get(url);
-  return posts;
-};
-
 const Home: NextPage = () => {
-  const [loading, setLoading] = useState(true);
-  const [post, setPost] = useState<PostTypes[]>([]);
-
-  useEffect(() => {
-    getPosts().then((posts) => {
-      setTimeout(() => {
-        setLoading(false);
-      }, 5000);
-      setPost(posts);
-    });
-  }, []);
-
   return (
     <HomeContainer>
-      <PostList post={post} isLoading={loading} />
+      <Link href={'/default'}>
+        <Anchor>Default Skeleton</Anchor>
+      </Link>
     </HomeContainer>
   );
 };
@@ -42,4 +21,13 @@ const HomeContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 10px;
+`;
+
+const Anchor = styled.a`
+  display: block;
+  padding: 0 10px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  line-height: 30px;
+  cursor: pointer;
 `;
